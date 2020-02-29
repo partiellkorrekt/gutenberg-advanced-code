@@ -15,4 +15,8 @@ add_action('enqueue_block_editor_assets', function () {
     null,
     true
   );
+  wp_enqueue_style(
+    'gutenberg-advanced-code-css',
+    plugin_dir_url(__FILE__) . 'ace-patches.css'
+  );
 });

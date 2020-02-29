@@ -77,7 +77,7 @@ const CodeEdit: EditorComponent<'languageMode' | 'filename' | 'content'> = ({
         />
       </PanelBody>
     </InspectorControls>
-    <div className={className} style={styles.wrap}>
+    <div className={className + ' use-ace-patches'} style={styles.wrap}>
       <div style={styles.header}>
         <div style={styles.language}>{attributes.languageMode || 'text'}</div>
         {attributes.filename || ' '}
