@@ -1,0 +1,24 @@
+{
+  "name": "gutenberg-advanced-code",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "file-loader": "^4.0.0",
+    "prop-types": "^15.7.2",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
+  },
+  "private": true,
+  "scripts": {
+    "start": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
+  },
+  "dependencies": {
+    "@wordpress/block-library": "^2.6.0",
+    "react-ace-builds": "^7.2.4"
+  }
+}
