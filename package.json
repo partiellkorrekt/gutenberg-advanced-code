@@ -3,14 +3,25 @@
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "@types/lodash": "^4.14.149",
+    "@types/react": "^16.9.23",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
     "babel-loader": "^8.0.6",
-    "file-loader": "^4.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "file-loader": "^5.1.0",
+    "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.6"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "private": true,
   "scripts": {
@@ -18,7 +29,8 @@
     "build": "webpack --mode=production"
   },
   "dependencies": {
-    "@wordpress/block-library": "^2.6.0",
-    "react-ace-builds": "^7.2.4"
+    "ace-builds": "^1.4.8",
+    "react-ace": "^8.0.0",
+    "react-ace-builds": "^7.3.1"
   }
 }

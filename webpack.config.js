@@ -1,16 +1,21 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: ['ts-loader']
       }
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
   },
   output: {
     path: __dirname + '/dist',
@@ -24,5 +29,6 @@ module.exports = {
     react: 'React',
     jquery: 'jQuery',
     lodash: 'lodash'
-  }
-};
+  },
+  performance: { hints: false }
+}
