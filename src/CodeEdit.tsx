@@ -85,8 +85,8 @@ const CodeEdit: EditorComponent<'languageMode' | 'filename' | 'content'> = ({
       <AceEditor
         {...defaultAceProps}
         mode={attributes.languageMode || 'text'}
-        value={_.unescape(attributes.content || '')}
-        onChange={(content: string): void => setAttributes({ content: _.escape(content) })}
+        value={attributes.content}
+        onChange={(content: string): void => setAttributes({ content: content })}
       />
       <div style={styles.footer} />
     </div>
