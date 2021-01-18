@@ -1,17 +1,19 @@
 import AceEditor from 'react-ace'
 import 'ace-builds/webpack-resolver'
-import 'react-ace-builds/webpack-resolver-min'
+// import 'react-ace-builds/webpack-resolver-min'
 import _ from 'lodash'
+import { decodeEntities } from '@wordpress/html-entities'
+import { escapeHTML } from '@wordpress/escape-html'
 
 const { Fragment } = wp.element
-const { InspectorControls } = wp.editor
+const { InspectorControls, useBlockProps } = wp.blockEditor
 const { PanelBody, SelectControl, TextControl } = wp.components
 const { __ } = wp.i18n
 
 export const modes = _.keys(ace.config.get('$moduleUrls'))
-  .filter(x => x.startsWith('ace/mode/'))
-  .map(x => x.substr(9))
-const modeOptions = modes.map(name => ({
+  .filter((x) => x.startsWith('ace/mode/'))
+  .map((x) => x.substr(9))
+const modeOptions = modes.map((name) => ({
   label: __(name),
   value: name
 }))
@@ -60,38 +62,43 @@ const CodeEdit: EditorComponent<'languageMode' | 'filename' | 'content'> = ({
   attributes,
   setAttributes,
   className
-}) => (
-  <Fragment>
-    <InspectorControls>
-      <PanelBody title={__('Code Properties')} initialOpen={true}>
-        <SelectControl
-          label={__('Language Mode')}
-          value={attributes.languageMode || 'text'}
-          options={modeOptions}
-          onChange={(languageMode): void => setAttributes({ languageMode })}
-        />
-        <TextControl
-          label={__('Filename')}
-          value={attributes.filename || ''}
-          onChange={(filename): void => setAttributes({ filename })}
-        />
-      </PanelBody>
-    </InspectorControls>
-    <div className={className + ' use-ace-patches'} style={styles.wrap}>
-      <div style={styles.header}>
-        <div style={styles.language}>{attributes.languageMode || 'text'}</div>
-        {attributes.filename || ' '}
+}) => {
+  const props = useBlockProps()
+  return (
+    <Fragment>
+      <InspectorControls>
+        <PanelBody title={__('Code Properties')} initialOpen={true}>
+          <SelectControl
+            label={__('Language Mode')}
+            value={attributes.languageMode || 'text'}
+            options={modeOptions}
+            onChange={(languageMode): void => setAttributes({ languageMode })}
+          />
+          <TextControl
+            label={__('Filename')}
+            value={attributes.filename || ''}
+            onChange={(filename): void => setAttributes({ filename })}
+          />
+        </PanelBody>
+      </InspectorControls>
+      <div {...props}>
+        <div className={className + ' use-ace-patches'} style={styles.wrap}>
+          <div style={styles.header}>
+            <div style={styles.language}>{attributes.languageMode || 'text'}</div>
+            {attributes.filename || ' '}
+          </div>
+          <AceEditor
+            {...defaultAceProps}
+            mode={attributes.languageMode || 'text'}
+            value={decodeEntities(attributes.content)}
+            onChange={(content: string): void => setAttributes({ content: escapeHTML(content) })}
+          />
+          <div style={styles.footer} />
+        </div>
       </div>
-      <AceEditor
-        {...defaultAceProps}
-        mode={attributes.languageMode || 'text'}
-        value={attributes.content}
-        onChange={(content: string): void => setAttributes({ content: content })}
-      />
-      <div style={styles.footer} />
-    </div>
-  </Fragment>
-)
+    </Fragment>
+  )
+}
 
 CodeEdit.additionalAttributes = {
   languageMode: {

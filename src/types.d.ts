@@ -49,7 +49,8 @@ interface WP {
     createElement: typeof React.createElement
     Fragment: typeof React.Fragment
   }
-  editor: {
+  blockEditor: {
+    useBlockProps: () => unknown,
     InspectorControls: InspectorControls
   }
   components: {
