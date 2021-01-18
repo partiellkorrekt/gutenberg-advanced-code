@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist',
-    publicPath: '/wp-content/plugins/gutenberg-advanced-code/dist/',
+    publicPath: '../wp-content/plugins/gutenberg-advanced-code/dist/',
     filename: 'main.js'
   },
   devServer: {
