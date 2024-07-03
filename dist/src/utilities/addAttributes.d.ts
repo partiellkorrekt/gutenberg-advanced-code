@@ -1,5 +1,2 @@
-declare const addAttributes: <T extends string>(blockName: string, additionalAttributes: Partial<Pick<{ [name in T]: {
-    type: string;
-    default: string;
-}; }, Exclude<T, "">>>) => void;
+declare const addAttributes: <T extends string>(blockName: string, additionalAttributes: EditorComponent<T>["additionalAttributes"]) => void;
 export default addAttributes;

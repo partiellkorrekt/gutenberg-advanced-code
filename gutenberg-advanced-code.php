@@ -15,6 +15,13 @@ add_action('enqueue_block_editor_assets', function () {
     null,
     true
   );
+});
+
+add_action('enqueue_block_assets', function () {
+  wp_enqueue_style(
+    'gutenberg-advanced-code-ace',
+    plugin_dir_url(__FILE__) . 'dist/main.css'
+  );
   wp_enqueue_style(
     'gutenberg-advanced-code-css',
     plugin_dir_url(__FILE__) . 'ace-patches.css'

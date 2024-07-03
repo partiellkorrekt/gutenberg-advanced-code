@@ -4,16 +4,11 @@
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
-    "lib": [
-      "es2015",
-      "es2016",
-      "esnext"
-    ],
+    "lib": ["es2015", "es2016", "esnext"],
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "declaration": true,
-    "jsxFactory": "wp.element.createElement",
     "strict": true,
     "strictNullChecks": true,
     "moduleResolution": "node"
